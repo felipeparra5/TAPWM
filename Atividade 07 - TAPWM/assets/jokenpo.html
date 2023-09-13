@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jokenpo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pedra, Papel e Tesoura</h1>
+    <p>Escolha uma opção:</p>
+    <button id="pedra">Pedra</button>
+    <button id="papel">Papel</button>
+    <button id="tesoura">Tesoura</button>
+    <div id="result"></div>
+
+    <script>
+        const userChoices = document.querySelectorAll("button");
+        const resultDiv = document.getElementById("result");
+
+        userChoices.forEach((choice) => {
+            choice.addEventListener("click", () => {
+                const userChoice = choice.id;
+                const computerChoice = getComputerChoice();
+                const result = getResult(userChoice, computerChoice);
+                showResult(result, userChoice, computerChoice);
+            });
+        });
+
+        function getComputerChoice() {
+            const choices = ["pedra", "papel", "tesoura"];
+            const randomIndex = Math.floor(Math.random() * 3);
+            return choices[randomIndex];
+        }
+
+        function getResult(user, computer) {
+            if (user === computer) {
+                return "Empate. ";
+            } else if (
+                (user === "pedra" && computer === "tesoura") ||
+                (user === "papel" && computer === "pedra") ||
+                (user === "tesoura" && computer === "papel")
+            ) {
+                return "Boa meu mano!";
+            } else {
+                return "O computador ganhou de você.";
+            }
+        }
+
+        function showResult(result, userChoice, computerChoice) {
+            resultDiv.textContent = `${result} Você escolheu ${userChoice}, o computador escolheu ${computerChoice}.`;
+        }
+    </script>
+</body>
+</html>
