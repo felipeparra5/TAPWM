@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 13 - TAPWM</title>
+</head>
+<body>
+  <script>
+    function Retangulo(base, altura) {
+      this.base = base;
+      this.altura = altura;
+      this.calcularArea = function() {
+        return this.base * this.altura;
+      };
+    }
+
+    var meuRetangulo = new Retangulo(5, 4);
+
+    var area = meuRetangulo.calcularArea();
+    document.write("Área do retângulo: " + area);
+  </script>
+
+  <h1>Exemplo de Conta</h1>
+  <script>
+    function Conta(nomeCorrentista, banco, numeroConta, saldo) {
+      this.nomeCorrentista = nomeCorrentista;
+      this.banco = banco;
+      this.numeroConta = numeroConta;
+      this.saldo = saldo;
+    }
+
+    function ContaCorrenteComSaldoEspecial(nomeCorrentista, banco, numeroConta, saldo, saldoEspecial) {
+      Conta.call(this, nomeCorrentista, banco, numeroConta, saldo);
+      this.saldoEspecial = saldoEspecial;
+    }
+
+    function ContaPoupancaComJurosDataVencimento(nomeCorrentista, banco, numeroConta, saldo, taxaJuros, dataVencimento) {
+      Conta.call(this, nomeCorrentista, banco, numeroConta, saldo);
+      this.taxaJuros = taxaJuros;
+      this.dataVencimento = dataVencimento;
+    }
+
+    var minhaContaCorrente = new ContaCorrenteComSaldoEspecial("Devairson", "Banco PARRA", "12345", 1000, 500);
+    var minhaContaPoupanca = new ContaPoupancaComJurosDataVencimento("Marquinhos", "Banco ALVES", "54321", 2000, 0.03, "24/11/2024");
+
+    document.write("Conta Corrente: " + JSON.stringify(minhaContaCorrente) + "<br>");
+    document.write("Conta Poupança: " + JSON.stringify(minhaContaPoupanca));
+  </script>
+
+</body>
+</html>
