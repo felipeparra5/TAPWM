@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atividade 14 - TAPWM</title>
+</head>
+<body>
+    <p>Base: <input type="text" id="base"></p>
+    <p>Altura: <input type="text" id="altura"></p>
+    <p><button onclick="calcularArea()">Calcular Área</button></p>
+    <p>Área do Retângulo: <span id="resultado"></span></p>
+
+    <script>
+        function calcularArea() {
+          var base = parseFloat(document.getElementById("base").value);
+          var altura = parseFloat(document.getElementById("altura").value);
+          var area = base * altura;
+          document.getElementById("resultado").innerText = area;
+        }
+    </script>
+</body>
+</html>
